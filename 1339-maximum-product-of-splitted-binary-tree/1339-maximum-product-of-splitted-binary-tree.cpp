@@ -14,15 +14,15 @@ public:
     long long treeSum = 0, result = 0, subTreeSum;
     int maxProduct(TreeNode* root) {
         int mod = 1e9+7;
-        treeSum = dfs(root);
+        treeSum = totalSumSubTree(root);
         totalSumSubTree(root);
         return result%mod;
         
     }
-    int dfs(TreeNode* root) {
-        if(root) return root->val + dfs(root->left) + dfs(root->right);
-        return 0;
-    }
+    // int dfs(TreeNode* root) {
+    //     if(root) return root->val + dfs(root->left) + dfs(root->right);
+    //     return 0;
+    // }
     int totalSumSubTree(TreeNode* root){
         if(!root) return 0;
         subTreeSum = totalSumSubTree(root->left) + totalSumSubTree(root->right) + root->val;
