@@ -1,27 +1,19 @@
 class Solution {
 public:
     int maximumBags(vector<int>& capacity, vector<int>& rocks, int additionalRocks) {
-        map<int,int> mp;
-        int count = 0;
-        for(int i=0;i<capacity.size();i++) {
-            if(capacity[i] > rocks[i]) {
-                mp[capacity[i]-rocks[i]] += 1;
-            } else {
-                count += 1;
+        int count = 0, n = capacity.size();
+        for(int i=0;i<n;i++)
+            capacity[i] -= rocks[i];
+        sort(capacity.begin(),capacity.end());
+        // for(int i=0;i<n;i++) cout << capacity[i] << " ";
+        for(int i=0;i<n;i++){
+            if(capacity[i] <= 0) count+=1;
+            else {
+                if(capacity[i] <= additionalRocks) {
+                    count+=1;
+                    additionalRocks -= capacity[i];
+                } else break;
             }
-        }
-        for(auto it:mp) {
-            if(it.first <= additionalRocks) {
-                int cnt = it.first*it.second;
-                // cout << cnt << endl;
-                if(cnt >= additionalRocks) {
-                    count += additionalRocks/it.first;
-                    return count;
-                } else {
-                    count += it.second;
-                    additionalRocks -= cnt;
-                }
-            } else break;
         }
         return count;
     }
