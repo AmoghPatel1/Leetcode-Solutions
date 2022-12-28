@@ -1,1 +1,1 @@
-​
+If in question only maximum/minimum element is used and modified then use max-heap or min-heap or priority queue.
