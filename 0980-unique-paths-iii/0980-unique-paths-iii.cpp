@@ -1,36 +1,32 @@
 class Solution {
+    int M, N, eCount=1, res=0;
 public:
-    int dfs(vector<vector<int>> grid, int x, int y, int zero) {
-        if(x<0 || y<0 || x >= grid.size() || y >= grid[0].size() || grid[x][y] == -1) {
-            return 0;
-        }
-        if(grid[x][y] == 2) {
-            return zero == -1?1:0;
-        }
-        grid[x][y] = -1;
-        zero--;
-        
-        int totalPaths = dfs(grid, x+1, y, zero) 
-            + dfs(grid, x-1, y, zero) 
-            + dfs(grid, x, y-1, zero) 
-            + dfs(grid, x, y+1, zero);
-        return totalPaths;
-    }
-        
     int uniquePathsIII(vector<vector<int>>& grid) {
-        int zero = 0;
-        int sx = 0;
-        int sy = 0;
-        
-        for(int r=0;r<grid.size();r++) {
-            for(int c=0;c<grid[r].size();c++){
-                if(grid[r][c] == 0) zero++;
-                else if(grid[r][c] == 1) {
-                    sx = r;
-                    sy = c;
-                }
+        M = grid.size(), N=grid[0].size();
+        int x, y;
+        for (int i=0; i < M; i++)
+            for (int j=0; j<N; j++){
+                if (grid[i][j] ==1) x= i, y=j;
+                else if (grid[i][j] ==0) eCount++;
             }
+
+        DFS(grid, x,y,0);
+        return res;        
+    }
+
+    void DFS(vector<vector<int>>& g, int i, int j,int count){
+        if ( i < 0 || i >= M ||  j < 0 || j >= N || g[i][j] == -1) return;
+
+        if(g[i][j] == 2){
+            if (count == eCount) res++;
+            return;
         }
-        return dfs(grid, sx, sy, zero);
+        g[i][j] = -1;
+        count++;
+        DFS(g,i+1,j,count);
+        DFS(g,i-1,j,count);
+        DFS(g,i,j+1,count);
+        DFS(g,i,j-1,count);
+        g[i][j] = 0;
     }
 };
