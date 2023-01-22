@@ -1,10 +1,9 @@
 class Solution {
 public:
-    bool isPalindrome(string s) {
-        if(s.size() == 1) return true;
-        int n = s.size();
-        for(int i=0;i<n/2;i++) {
-            if(s[i] != s[n-i-1]) return false;
+    bool isPalindrome(string s, int start, int end) {
+        while(start <= end) {
+            if(s[start] != s[end]) return false;
+            start+=1; end-=1;
         }
         return true;
     }
@@ -15,8 +14,8 @@ public:
             return;
         }
         for(int i=ind;i<s.size();i++) {
-            string str = s.substr(ind, i-ind+1);
-            if(isPalindrome(str)){
+            // string str = s.substr(ind, i-ind+1);
+            if(isPalindrome(s, ind, i)){
                 ds.push_back(s.substr(ind, i-ind+1));
                 func(i+1, s, ds, ans);
                 ds.pop_back();
