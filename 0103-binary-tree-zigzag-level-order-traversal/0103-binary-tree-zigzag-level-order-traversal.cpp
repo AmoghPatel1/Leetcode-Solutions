@@ -28,17 +28,17 @@ public:
                 if(it->right) q.push(it->right);
                 
             }
-            // if(level%2==1) {
-            //     reverse(v.begin(), v.end());
-            // }
-            ans.push_back(v);
-            // level +=1;
-        }
-        for(int i=0;i<ans.size();i++) {
-            if(i%2==1) {
-                reverse(ans[i].begin(), ans[i].end());
+            if(level%2==1) {
+                reverse(v.begin(), v.end());
             }
+            ans.push_back(v);
+            level +=1;
         }
+        // for(int i=0;i<ans.size();i++) {
+        //     if(i%2==1) {
+        //         reverse(ans[i].begin(), ans[i].end());
+        //     }
+        // }
         
         return ans;
     }
