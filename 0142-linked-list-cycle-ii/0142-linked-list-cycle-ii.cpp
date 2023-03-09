@@ -1,16 +1,23 @@
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
-
-class Solution:
-    def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        cur = head
-        lookup = set()
-        
-        while cur:
-            if cur in lookup: return cur
-            lookup.add(cur)
-            cur = cur.next
-        return None
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode *detectCycle(ListNode *head) {
+        set<ListNode *> s;
+        ListNode* cur = head;
+        while(cur) {
+            if(s.find(cur) != s.end()) {
+                return cur;
+            }
+            s.insert(cur);
+            cur = cur->next;
+        }
+        return NULL;
+    }
+};
