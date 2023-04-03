@@ -8,12 +8,10 @@ public:
         while(left < right) {
             if(people[left] + people[right] <= limit) {
                 maxm = max(right, maxm);
-                right -= 1;
                 left += 1;
                 ans += 1;
-            } else {
-                right -= 1;
-            }
+            } 
+            right -= 1;
         }
         ans = n - ans;
         return ans;
