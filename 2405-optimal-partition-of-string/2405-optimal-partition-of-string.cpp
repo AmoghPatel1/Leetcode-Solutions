@@ -1,15 +1,15 @@
 class Solution {
 public:
     int partitionString(string s) {
-        map<char,int> mp;
+        set<char> st;
         int ans = 0;
         for(int i=0;i<s.size();i++) {
             // cout << mp[s[i]] << endl;
-            if(mp[s[i]] > 0) {
+            if(st.find(s[i]) != st.end()) {
                 ans += 1;
-                mp.clear();
+                st.clear();
             }
-            mp[s[i]] += 1;
+            st.insert(s[i]);
         }
         return ans+1;
     }
