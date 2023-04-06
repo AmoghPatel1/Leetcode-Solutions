@@ -1,11 +1,5 @@
 class Solution {
 public:
-    
-    bool isValid(int i, int j, int n, int m, vector<vector<int>> &grid) {
-        if(i < n && i >=0 && j < m && j>=0 && grid[i][j] == 0) return true;
-        return false;
-    }
-    
     void dfs(int i, int j, int n, int m, vector<vector<int>>& grid) {
         grid[i][j] = 1;
         
@@ -16,7 +10,7 @@ public:
             int nx = i + dx[k];
             int ny = j + dy[k];
             
-            if(isValid(nx, ny, n, m, grid)) {
+            if(nx<n && nx>=0 && ny<m && ny>=0 && grid[nx][ny] == 0) {
                 dfs(nx, ny, n, m, grid);
             }
         }
