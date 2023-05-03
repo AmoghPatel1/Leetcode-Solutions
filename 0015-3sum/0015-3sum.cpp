@@ -1,28 +1,27 @@
 class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
-        vector<vector<int>> ans;
-        set<vector<int>> s;
         int n = nums.size();
+        vector<vector<int>> ans;
         sort(nums.begin(), nums.end());
-        for(int i=0;i<n-2;i++) {
-            int low = i+1, high = n-1;
-            // int target = (-1)*(nums[i] + nums[j]);
-            while(low < high) {
-                int sum = nums[i] + nums[low] + nums[high];
-                if(sum == 0){
-                    s.insert({nums[i],nums[low],nums[high]});
-                    low += 1;
-                    high -= 1;
-                } else if(sum < 0) {
-                    low += 1;
+        for(int i=0;i<n;i++){
+            if(i>0 && nums[i] == nums[i-1]) continue;
+            int j = i+1;
+            int k = n-1;
+            while(j<k) {
+                int sum = nums[i] + nums[j] + nums[k];
+                if(sum < 0){
+                    j++; 
+                } else if(sum > 0){
+                    k--;
                 } else {
-                    high -= 1;
+                    ans.push_back({nums[i], nums[j], nums[k]});
+                    j+=1;k-=1;
+                    while(j<k && nums[j] == nums[j-1]) j+=1;
+                    while(j<k && nums[k] == nums[k+1]) k-=1;
                 }
             }
         }
-        for(auto it: s)
-            ans.push_back(it);
         return ans;
     }
 };
