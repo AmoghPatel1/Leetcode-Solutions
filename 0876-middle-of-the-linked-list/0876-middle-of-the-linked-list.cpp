@@ -11,12 +11,16 @@
 class Solution {
 public:
     ListNode* middleNode(ListNode* head) {
+        /** Method Used here is Slow and Fast pointer.
+         * first pointer is slow pointer and second pointer is fast pointer.
+         */
+        
+        
         ListNode *first = head, *second = head;
         while(second != nullptr && second->next != nullptr) {
+            cout << first->val << " " << second->val << endl;
             first = first->next;
             second = second->next->next;
-            
-            // cout << first->val << " " << second->val << endl;
         }
         return first;
     }
