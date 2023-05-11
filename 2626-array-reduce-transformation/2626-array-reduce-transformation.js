@@ -5,14 +5,9 @@
  * @return {number}
  */
 var reduce = function(nums, fn, init) {
-    if(nums.length === 0) return init;
-    let val;
+    let val = init;
     for(let i=0;i<nums.length;i++) {
-        if(i === 0) {
-            val = fn(init, nums[0]);
-        } else {
-            val = fn(val, nums[i]);
-        }
+        val = fn(val, nums[i]);
     }
     return val;
 };
