@@ -11,14 +11,14 @@
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {       
-        vector<int> v;
+        int k = 0;
         ListNode* node = head;
         while(node) {
-            v.push_back(node->val);
+            k += 1;
             node = node->next;
         }
-        if(v.size() == 1 && n==1) return nullptr;
-        int index = v.size()-n;
+        if(k == 1 && n == 1) return nullptr;
+        int index = k-n;
         if(index == 0) return head->next;
         node = head;
         while(index-1) {
