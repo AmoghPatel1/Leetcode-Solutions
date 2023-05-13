@@ -13,21 +13,21 @@ public:
     ListNode* rotateRight(ListNode* head, int k) {
         if(!head || !head->next) return head;
         ListNode* tail = head;
-        int count = 0;
-        while(tail) {
+        int count = 1;
+        while(tail->next != nullptr) {
             count += 1;
             tail = tail->next;
         }
-        tail = head;
+        // cout << count << " " << tail->val << endl;
+        tail->next = head;
         k = k%count;
+        k = count - k;
         while(k--) {
-            while(tail->next->next) tail = tail->next;
-            // cout << head->val << " "<< tail->val << endl;
-            tail->next->next =  head;
-            head = tail->next;
-            tail->next = nullptr;
-            tail = head;
+            tail=tail->next;
         }
-        return tail;
+        head = tail->next;
+        tail->next = nullptr;
+            
+        return head;
     }
 };
