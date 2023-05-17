@@ -24,8 +24,6 @@ public:
         ListNode* cur = ans;
         while(i<len) {
             if(i+k > len) {
-                // cout << v.size() << endl;
-                // cout << root->val << endl;
                 cur->next = root;
                 return ans->next;
             }
