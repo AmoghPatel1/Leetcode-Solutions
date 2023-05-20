@@ -113,21 +113,41 @@ struct Node{
     the flattened linked list. */
 Node *flatten(Node *root)
 {
-   // Your code here
    Node* head = root;
-   vector<int> v;
    while(head) {
-       v.push_back(head->data);
-       while(head->bottom) {
-           v.push_back(head->bottom->data);
-           head->bottom = head->bottom->bottom;
+       Node* node = head->bottom;
+       Node* cur = head;
+       while(node) {
+            // cout << node->data << endl;
+            if(cur->next) {
+                if(node->data <= cur->next->data) {
+                    Node* temp = new Node(node->data);
+                    temp->next = cur->next;
+                    cur->next = temp;
+                    cur = cur->next;
+                    node = node->bottom;
+                } else {
+                    cur = cur->next;
+                }
+            } else {
+                Node* temp = new Node(node->data);
+                cur->next = temp;
+                cur = cur->next;
+                node = node->bottom;
+            }
+            
        }
+       head->bottom = NULL;
        head = head->next;
    }
-   sort(v.begin(), v.end());
-   for(int i=0;i<v.size();i++) {
-       cout << v[i] << " ";
+   
+   head = root;
+   while(head){
+       head->bottom = head->next;
+       head->next = NULL;
+       head = head->bottom;
    }
-   return NULL;
+   
+   return root;
 }
 
