@@ -18,7 +18,7 @@ public:
         int ans = 0;
         cout << ans << " ";
         for(int i=1;i<n-1;i++) {
-            int water = min(leftMaxHeight[i-1], rightMaxHeight[i+1]) - height[i];
+            int water = min(leftMaxHeight[i], rightMaxHeight[i]) - height[i];
             if(water > 0) ans += water;
         }
         return ans;
