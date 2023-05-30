@@ -1,20 +1,20 @@
 class MyHashSet {
 public:
-    set<int> s;
+    bool arr[(int) 1e6+1] = { false };
     MyHashSet() {
         
     }
     
     void add(int key) {
-        s.insert(key);
+        arr[key] = true;
     }
     
     void remove(int key) {
-        s.erase(key);
+        arr[key] = false;
     }
     
     bool contains(int key) {
-        return s.count(key);
+        return arr[key];
     }
 };
 
