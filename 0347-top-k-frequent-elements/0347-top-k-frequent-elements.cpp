@@ -1,23 +1,25 @@
+#define pii pair<int,int>
+
+class Compare {
+public:
+    bool operator()(pii &a, pii &b) {
+        return a.second < b.second;
+    }
+};
+
+
 class Solution {
 public:
     vector<int> topKFrequent(vector<int>& nums, int k) {
         map<int,int> mp;
-        for(auto it : nums) {
-            mp[it] += 1;
-        }
-        // for(auto it : mp) {
-        //     cout << it.first << " " << it.second << endl;
-        // }
-        vector<pair<int,int>> vp;
+        for(int i=0;i<nums.size();i++) mp[nums[i]] += 1;
+        priority_queue<pii, vector<pii>, Compare> pq;
+        for(pii it: mp) pq.push({it.first, it.second});
         vector<int> ans;
-        for(auto it: mp) vp.push_back(it);
-        sort(vp.begin(), vp.end(), [](pair<int,int> &a, pair<int,int> &b) {
-            return a.second > b.second;
-        });
-        if(k > vp.size()) return {};
-        int freq = vp[k-1].second;
-        for(auto it: vp) {
-            if(it.second >= freq) ans.push_back(it.first);
+        for(int i=0;i<k;i++) {
+            int val = pq.top().first;
+            ans.push_back(val);
+            pq.pop();
         }
         return ans;
     }
