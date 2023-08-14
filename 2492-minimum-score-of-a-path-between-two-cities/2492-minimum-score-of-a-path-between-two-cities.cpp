@@ -1,34 +1,32 @@
 class Solution {
 public:
-    int bfs(int& n, vector<vector<pair<int, int>>>& adj) {
-        vector<bool> visit(n + 1);
+    int bfs(vector<vector<pair<int,int>>> &adj) {
+        vector<bool> vis(adj.size(), false);
+        int ans = INT_MAX;
         queue<int> q;
-        int answer = INT_MAX;
-
         q.push(1);
-        visit[1] = true;
-
-        while (!q.empty()) {
+        vis[1] = true;
+        while(!q.empty()) {
             int node = q.front();
             q.pop();
-
-            for (auto& edge : adj[node]) {
-                answer = min(answer, edge.second);
-                if (!visit[edge.first]) {
-                    visit[edge.first] = true;
-                    q.push(edge.first);
-                }
+            for(int i=0;i<adj[node].size();i++) {
+                ans = min(ans, adj[node][i].second);
+                if(!vis[adj[node][i].first]) {
+                    vis[adj[node][i].first] = true;
+                    q.push(adj[node][i].first);
+                }   
             }
         }
-        return answer;
+        return ans;
     }
-
+    
     int minScore(int n, vector<vector<int>>& roads) {
-        vector<vector<pair<int, int>>> adj(n + 1);
-        for (auto& road : roads) {
-            adj[road[0]].push_back({road[1], road[2]});
-            adj[road[1]].push_back({road[0], road[2]});
+        int size = roads.size();
+        vector<vector<pair<int,int>>> adj(n+1);
+        for(int i=0;i<size;i++) {
+            adj[roads[i][0]].push_back({roads[i][1], roads[i][2]});
+            adj[roads[i][1]].push_back({roads[i][0], roads[i][2]});
         }
-        return bfs(n, adj);
+        return bfs(adj);
     }
-};
+};  
