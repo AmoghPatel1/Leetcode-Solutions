@@ -1,29 +1,18 @@
 class Solution {
 public:
+    int dp[1010][1010];
 
-    // Memoization : Top Down Approach
-    int recurse(int m, int n, string text1, string text2,  vector<vector<int>> &dp) {
-        if(m == 0 || n == 0) return 0;
-        if(dp[m][n] != -1) return dp[m][n];
-        if(text1[m-1] == text2[n-1]) return dp[m][n] = 1 + recurse(m-1, n-1, text1, text2, dp);
-        else return  dp[m][n] = max(recurse(m-1, n, text1, text2, dp), recurse(m, n-1, text1, text2, dp));
+    int func(int i, int j,string &s, string &t) {
+       if(i < 0 || j < 0) return 0;
+       if(dp[i][j] != -1)return dp[i][j];
+       if(s[i] == t[j]) return dp[i][j] = 1 + func(i-1,j-1,s,t);
+       return dp[i][j] = max(func(i-1,j,s,t),func(i,j-1,s,t));  
     }
-    
-    int longestCommonSubsequence(string text1, string text2) {
-        int m = text1.size(), n = text2.size();
-        // vector<vector<int>> dp(m+1, vector<int> (n+1, -1));
-        // return recurse(m, n, text1, text2, dp);
-        vector<vector<int>> dp(m+1, vector<int> (n+1, 0));
-        for(int i=0;i<=m;i++) dp[i][0] = 0;
-        for(int j=0;j<=n;j++) dp[0][j] = 0;
-        for(int i=1;i<=m;i++) {
-            for(int j=1;j<=n;j++) {
-                if(text1[i-1] == text2[j-1]) 
-                    dp[i][j] = 1 + dp[i-1][j-1];
-                else 
-                    dp[i][j] = max(dp[i-1][j], dp[i][j-1]);
-            }
-        }
-        return dp[m][n];
+
+    int longestCommonSubsequence(string s, string t) {
+        memset(dp,-1, sizeof(int)*1010*1010);
+        int n1 = s.length();
+        int n2 = t.length();
+        return func(n1-1,n2-1,s,t);
     }
 };
