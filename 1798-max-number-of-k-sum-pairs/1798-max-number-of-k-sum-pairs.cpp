@@ -6,10 +6,9 @@ public:
         int ans = 0;
         for(int i=0;i<n;i++) {
             int comp = k - nums[i];
-            if(mp.count(comp)) {
+            if(mp[comp] > 0) {
                 ans += 1;
-                if(mp[comp] > 1) mp[comp] -= 1;
-                else mp.erase(comp);
+                mp[comp] -= 1;
             } else mp[nums[i]] += 1;
         }
         return ans;
