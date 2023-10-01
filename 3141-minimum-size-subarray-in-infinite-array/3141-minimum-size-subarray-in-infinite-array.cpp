@@ -4,7 +4,7 @@ public:
     int minSizeSubarray(vector<int>& nums, int target) {
         int ans = 0;
         int n = nums.size();
-        long long sum = accumulate(nums.begin(), nums.end(), 0*1LL);
+        long long sum = accumulate(nums.begin(), nums.end(), 0LL);
         if(target > sum) {
             ans += (target/sum) * n;
             target %= sum;
