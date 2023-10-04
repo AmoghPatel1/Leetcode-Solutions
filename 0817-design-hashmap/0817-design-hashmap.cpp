@@ -1,21 +1,22 @@
 class MyHashMap {
 public:
-    map<int,int> mp;
+    int arr[1000001];
+    
     MyHashMap() {
+        fill_n(arr, 1000001, -1);
         
     }
     
     void put(int key, int value) {
-        mp[key] = value;
+        arr[key] = value;
     }
     
     int get(int key) {
-        if(mp.find(key)!= mp.end()) return mp[key];
-        else return -1; 
+        return arr[key]; 
     }
     
     void remove(int key) {
-        if(mp.find(key) != mp.end()) mp.erase(key);
+        arr[key] = -1;
     }
 };
 
