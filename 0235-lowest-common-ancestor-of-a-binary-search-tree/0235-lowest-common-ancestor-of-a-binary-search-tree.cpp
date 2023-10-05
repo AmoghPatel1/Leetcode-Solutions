@@ -31,13 +31,7 @@ public:
         map<int, TreeNode*> mp;
         inorder(root, p, q, {}, mp);
         int ans = INT_MAX;
-        set<int> s;
-        
-        for(int x : first) cout << x << " ";
-        cout << endl;
-
-        for(int x : second) cout << x << " ";
-        cout << endl;
+        unordered_set<int> s;
 
         for(auto x : first) s.insert(x);
         for(auto x : second)  {
