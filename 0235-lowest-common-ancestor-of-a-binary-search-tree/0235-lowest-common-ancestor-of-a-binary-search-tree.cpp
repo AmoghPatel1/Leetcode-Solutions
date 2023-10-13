@@ -28,18 +28,22 @@ public:
     }
 
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        map<int, TreeNode*> mp;
-        inorder(root, p, q, {}, mp);
-        int ans = INT_MAX;
-        unordered_set<int> s;
+        // map<int, TreeNode*> mp;
+        // inorder(root, p, q, {}, mp);
+        // int ans = INT_MAX;
+        // unordered_set<int> s;
 
-        for(auto x : first) s.insert(x);
-        for(auto x : second)  {
-            if(s.find(x) != s.end()) {
-                if(ans != INT_MAX && x < ans) ans = x;
-                else ans = x;
-            }
-        }
-        return mp[ans];
+        // for(auto x : first) s.insert(x);
+        // for(auto x : second)  {
+        //     if(s.find(x) != s.end()) {
+        //         if(ans != INT_MAX && x < ans) ans = x;
+        //         else ans = x;
+        //     }
+        // }
+        // return mp[ans];
+
+        while((root->val - p->val)* 1LL * (root->val - q->val) > 0)
+            root = p->val < root->val ? root->left : root->right;
+        return root; 
     }
 };
