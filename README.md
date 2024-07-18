@@ -7,6 +7,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 ## Array
 |  |
 | ------- |
+| [1330-longest-arithmetic-subsequence-of-given-difference](https://github.com/AmoghPatel1/Leetcode-Solutions/tree/master/1330-longest-arithmetic-subsequence-of-given-difference) |
 | [1720-crawler-log-folder](https://github.com/AmoghPatel1/Leetcode-Solutions/tree/master/1720-crawler-log-folder) |
 ## String
 |  |
@@ -24,6 +25,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [1013-fibonacci-number](https://github.com/AmoghPatel1/Leetcode-Solutions/tree/master/1013-fibonacci-number) |
+| [1330-longest-arithmetic-subsequence-of-given-difference](https://github.com/AmoghPatel1/Leetcode-Solutions/tree/master/1330-longest-arithmetic-subsequence-of-given-difference) |
 ## Recursion
 |  |
 | ------- |
@@ -32,4 +34,8 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [1013-fibonacci-number](https://github.com/AmoghPatel1/Leetcode-Solutions/tree/master/1013-fibonacci-number) |
+## Hash Table
+|  |
+| ------- |
+| [1330-longest-arithmetic-subsequence-of-given-difference](https://github.com/AmoghPatel1/Leetcode-Solutions/tree/master/1330-longest-arithmetic-subsequence-of-given-difference) |
 <!---LeetCode Topics End-->
