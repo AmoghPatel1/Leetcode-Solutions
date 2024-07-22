@@ -13,6 +13,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 ## String
 |  |
 | ------- |
+| [0131-palindrome-partitioning](https://github.com/AmoghPatel1/Leetcode-Solutions/tree/master/0131-palindrome-partitioning) |
 | [1720-crawler-log-folder](https://github.com/AmoghPatel1/Leetcode-Solutions/tree/master/1720-crawler-log-folder) |
 ## Stack
 |  |
@@ -25,6 +26,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 ## Dynamic Programming
 |  |
 | ------- |
+| [0131-palindrome-partitioning](https://github.com/AmoghPatel1/Leetcode-Solutions/tree/master/0131-palindrome-partitioning) |
 | [0322-coin-change](https://github.com/AmoghPatel1/Leetcode-Solutions/tree/master/0322-coin-change) |
 | [1013-fibonacci-number](https://github.com/AmoghPatel1/Leetcode-Solutions/tree/master/1013-fibonacci-number) |
 | [1330-longest-arithmetic-subsequence-of-given-difference](https://github.com/AmoghPatel1/Leetcode-Solutions/tree/master/1330-longest-arithmetic-subsequence-of-given-difference) |
@@ -44,4 +46,8 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [0322-coin-change](https://github.com/AmoghPatel1/Leetcode-Solutions/tree/master/0322-coin-change) |
+## Backtracking
+|  |
+| ------- |
+| [0131-palindrome-partitioning](https://github.com/AmoghPatel1/Leetcode-Solutions/tree/master/0131-palindrome-partitioning) |
 <!---LeetCode Topics End-->
